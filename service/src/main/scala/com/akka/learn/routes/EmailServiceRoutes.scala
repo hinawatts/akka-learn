@@ -21,12 +21,18 @@ trait EmailServiceRoutes extends JsonSupport {
 
     path("sendEmail") {
       get {
-        onSuccess(app.emailSendService ? SendEmail("send email")) {
-          case response: EmailSendResponse =>
-            complete(StatusCodes.Accepted, response)
-          case _ =>
-            complete(StatusCodes.InternalServerError)
+        headerValueByName("x-customer-id"){(customerId)=>
+          headerValueByName("x-client"){(client)=>
+            onSuccess(app.emailSendService ? SendEmail("send email",customerId,client)) {
+              case response: EmailSendResponse =>
+                complete(StatusCodes.Accepted, response)
+              case _ =>
+                complete(StatusCodes.InternalServerError)
+            }
+          }
+
         }
+
       }
     }
   }

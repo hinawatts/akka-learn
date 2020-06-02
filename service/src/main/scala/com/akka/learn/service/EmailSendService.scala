@@ -7,7 +7,7 @@ import com.akka.learn.model.EmailSendResponse
 class EmailSendService extends Actor {
 
   override def receive: Receive = {
-    case SendEmail(emailSendReq) =>
-      sender()!EmailSendResponse("request received")
+    case SendEmail(emailSendReq,customerId,clientId) =>
+      sender()!EmailSendResponse("Received request ",customerId,clientId)
   }
 }
