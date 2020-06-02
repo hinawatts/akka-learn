@@ -6,7 +6,8 @@ import spray.json.DefaultJsonProtocol
 
 trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
 
-  implicit val emailSendResponseFormat = jsonFormat1(EmailSendResponse)
+  //marshaller to convert object to JSON response where object has two fields, so we used jsonFormat2 method to marshal it
+  implicit val emailSendResponseFormat = jsonFormat3(EmailSendResponse)
 
 
 }
