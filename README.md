@@ -13,4 +13,9 @@ For example - '1 - SBT-multi-module' refers to first step to create the project 
     * Implements Akka actor for handling GET request
     * Defines routes for GET API that sends message to actor on receiving request
     * Marshaller that converts the response received from GET API(actor) to JSON format, so that it can be returned to the client.
+* 3-akka-http-GET-header-check :- Contains implementation of checking mandatory headers before processing the request.
+    * If mandatory header is present, the GET request will be executed.
+    * If mandatory header is not found, header not found error would be returned to the client.
+    * Extracts the value of headers and passes it to the GET request processing logic.
+    
 * _WIP_ : <Would be adding branches around implementation of filters on request receive, post requests and custom directives>
